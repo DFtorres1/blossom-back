@@ -1,0 +1,30 @@
+import { DataTypes, Model, Sequelize } from 'sequelize';
+import DB from 'src/database';
+
+class BaseModel<T = any, T2 = any> extends Model {
+  public id!: number;
+  public readonly createdAt!: Date;
+  public readonly updatedAt!: Date;
+  public readonly deletedAt!: Date | null;
+
+  static initBaseAttributes(sequelize: Sequelize) {
+    super.init(
+      {
+        id: {
+          type: DataTypes.INTEGER,
+          autoIncrement: true,
+          primaryKey: true,
+        },
+      },
+      {
+        sequelize: DB.sequelize,
+        timestamps: true,
+        paranoid: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+      },
+    );
+  }
+}
+
+export default BaseModel;
