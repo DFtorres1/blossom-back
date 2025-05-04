@@ -1,8 +1,9 @@
 import DB from 'database';
-import { Op } from 'sequelize';
+import { CharacterDTO } from 'gql/dto/character.dto';
+import { Op, WhereAttributeHash, Order } from 'sequelize';
 
-const characters = async (args: any) => {
-  const where: any = {};
+const characters = async (args: CharacterDTO) => {
+  const where: WhereAttributeHash = {};
 
   if (args.id) where.id = args.id;
   if (args.name) where.name = { [Op.like]: `%${args.name}%` };
@@ -11,7 +12,7 @@ const characters = async (args: any) => {
   if (args.gender) where.gender = args.gender;
   if (args.is_starred !== undefined) where.is_starred = args.is_starred;
 
-  const order: any = [];
+  const order: Order = [];
   if (args.order_by) {
     order.push([args.order_by, args.order_direction || 'ASC']);
   }
