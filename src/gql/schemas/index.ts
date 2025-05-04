@@ -1,9 +1,41 @@
-import { buildSchema } from "graphql";
+import { buildSchema } from 'graphql';
 
 const schema = buildSchema(`
-    type Query { 
-      hello: String 
+    type Origin {
+      name: String
+      url: String
     }
-  `);
+
+    type Character {
+      id: ID!
+      name: String
+      status: String
+      species: String
+      gender: String
+      image_path: String
+      is_starred: Boolean
+      origin: Origin
+    }
+
+    type Query {
+      character(id: ID!): Character
+
+      characters(
+      id: ID
+      name: String
+      status: String
+      species: String
+      gender: String
+      is_starred: Boolean
+      order_by: String
+      order_direction: String
+      ): [Character]
+    }
+    
+    type Mutation {
+      updateCharacterIsStarred(id: ID!, is_starred: Boolean!): Character
+      deleteCharacter(id: ID!): String
+    }
+`);
 
 export default schema;

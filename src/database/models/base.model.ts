@@ -21,6 +21,7 @@ class BaseModel<T = any, T2 = any> extends Model {
         paranoid: true,
         createdAt: 'created_at',
         updatedAt: 'updated_at',
+        deletedAt: 'deleted_at',
       },
     );
   }

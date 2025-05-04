@@ -1,7 +1,9 @@
+import mutationResolvers from './mutation';
+import queryResolver from './query';
+
 const root = {
-  hello() {
-    return "Hello world";
-  },
+  ...queryResolver,
+  ...mutationResolvers,
 };
 
 export default root;

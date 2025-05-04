@@ -12,6 +12,8 @@ class Character extends BaseModel {
 }
 
 export default function (sequelize: Sequelize): typeof Character {
+  Character.initBaseAttributes(sequelize);
+
   Character.init(
     {
       status: {
@@ -41,6 +43,9 @@ export default function (sequelize: Sequelize): typeof Character {
     },
     {
       sequelize: sequelize,
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
+      deletedAt: 'deleted_at',
     },
   );
 

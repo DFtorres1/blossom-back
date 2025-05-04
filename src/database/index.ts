@@ -24,7 +24,7 @@ const sequelize = new Sequelize(
 sequelize.authenticate();
 
 const DB = {
-  character: Character,
+  character: Character(sequelize),
   sequelize,
   Sequelize
 };
