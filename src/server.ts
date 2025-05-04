@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import app from './app';
-import graphqlHandler from './graphql';
+import graphqlHandler from './gql';
+import DB from './database';
+import logger from './utils/logger';
 
 dotenv.config();
 
@@ -14,6 +16,14 @@ app.get('/', async (_, res) => {
     .json({ message: 'Connection has been established successfully.' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+DB.sequelize
+  .authenticate()
+  .then(() => {
+    logger.info('Database connected successfully!');
+    app.listen(PORT, () => {
+      logger.info(`Server is running on http://localhost:${PORT}`);
+    });
+  })
+  .catch(error => {
+    logger.error('Unable to connect to the database:', error);
+  });
