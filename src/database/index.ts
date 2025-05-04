@@ -26,6 +26,7 @@ sequelize.authenticate();
 const DB = {
   character: Character,
   sequelize,
+  Sequelize
 };
 
 export default DB;

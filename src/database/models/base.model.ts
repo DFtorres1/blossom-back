@@ -1,5 +1,4 @@
 import { DataTypes, Model, Sequelize } from 'sequelize';
-import DB from 'src/database';
 
 class BaseModel<T = any, T2 = any> extends Model {
   public id!: number;
@@ -17,7 +16,7 @@ class BaseModel<T = any, T2 = any> extends Model {
         },
       },
       {
-        sequelize: DB.sequelize,
+        sequelize: sequelize,
         timestamps: true,
         paranoid: true,
         createdAt: 'created_at',

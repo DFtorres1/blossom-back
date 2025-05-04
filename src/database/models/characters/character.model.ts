@@ -1,6 +1,5 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Sequelize } from 'sequelize';
 import BaseModel from '../base.model';
-import DB from 'database';
 
 class Character extends BaseModel {
   public status!: string;
@@ -12,36 +11,38 @@ class Character extends BaseModel {
   public origin!: Object;
 }
 
-Character.init(
-  {
-    status: {
-      type: DataTypes.ENUM,
-      values: ['Alive', 'Dead', 'unknown'],
+export default function (sequelize: Sequelize): typeof Character {
+  Character.init(
+    {
+      status: {
+        type: DataTypes.ENUM,
+        values: ['Alive', 'Dead', 'unknown'],
+      },
+      species: {
+        type: DataTypes.STRING,
+      },
+      gender: {
+        type: DataTypes.ENUM,
+        values: ['Female', 'Male', 'Genderless', 'unknown'],
+      },
+      name: {
+        type: DataTypes.STRING,
+      },
+      image_path: {
+        type: DataTypes.STRING,
+      },
+      is_starred: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      origin: {
+        type: DataTypes.JSON,
+      },
     },
-    species: {
-      type: DataTypes.STRING,
+    {
+      sequelize: sequelize,
     },
-    gender: {
-      type: DataTypes.ENUM,
-      values: ['Female', 'Male', 'Genderless', 'unknown'],
-    },
-    name: {
-      type: DataTypes.STRING,
-    },
-    image_path: {
-      type: DataTypes.STRING,
-    },
-    is_starred: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-    origin: {
-      type: DataTypes.JSON,
-    },
-  },
-  {
-    sequelize: DB.sequelize,
-  },
-);
+  );
 
-export default Character;
+  return Character;
+}
