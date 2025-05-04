@@ -10,12 +10,6 @@ const PORT = process.env.PORT || 4000;
 
 app.all('/graphql', graphqlHandler);
 
-app.get('/', async (_, res) => {
-  res
-    .status(200)
-    .json({ message: 'Connection has been established successfully.' });
-});
-
 DB.sequelize
   .authenticate()
   .then(() => {

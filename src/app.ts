@@ -3,6 +3,7 @@ import cors from 'cors';
 import logger from './utils/logger';
 import { swaggerSpec, swaggerUi } from './utils/swagger';
 import { errorHandler } from './utils/error-handler';
+import { ruruHTML } from 'ruru/server';
 
 const app = express();
 
@@ -42,5 +43,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Error managing
 app.use(errorHandler);
+
+// Serve the GraphiQL IDE.
+app.get('/', (_req, res) => {
+  res.type('html');
+  res.end(ruruHTML({ endpoint: '/graphql' }));
+});
 
 export default app;
