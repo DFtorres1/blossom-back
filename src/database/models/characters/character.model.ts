@@ -1,15 +1,7 @@
 import { DataTypes, Sequelize } from 'sequelize';
 import BaseModel from '../base.model';
 
-class Character extends BaseModel {
-  public status!: string;
-  public species!: string;
-  public gender!: string;
-  public name!: string;
-  public image_path!: string;
-  public is_starred!: boolean;
-  public origin!: Object;
-}
+class Character extends BaseModel {}
 
 export default function (sequelize: Sequelize): typeof Character {
   Character.initBaseAttributes(sequelize);

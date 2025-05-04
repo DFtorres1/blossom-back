@@ -16,10 +16,12 @@ const characters = async (args: any) => {
     order.push([args.order_by, args.order_direction || 'ASC']);
   }
 
-  return await DB.character.findAll({
+  const result = DB.character.findAll({
     where,
     order,
   });
+
+  return result;
 };
 
-export default characters
+export default characters;
