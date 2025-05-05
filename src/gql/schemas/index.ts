@@ -1,6 +1,10 @@
 import { buildSchema } from 'graphql';
 
 const schema = buildSchema(`
+    type DeleteResult {
+      result: String
+    }
+
     type Origin {
       name: String
       url: String
@@ -34,7 +38,7 @@ const schema = buildSchema(`
     
     type Mutation {
       updateIsStarred(id: ID!, is_starred: Boolean!): Character
-      deleteCharacter(id: ID!): String
+      deleteCharacter(id: ID!): DeleteResult
     }
 `);
 

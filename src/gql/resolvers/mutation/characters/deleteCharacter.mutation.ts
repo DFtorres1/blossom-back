@@ -6,6 +6,6 @@ const deleteCharacter = async ({ id }: { id: number }) => {
 
   await character.destroy();
 
-  return `Character with id ${id} deleted successfully.`;
+  return { result: `Character with id ${id} deleted successfully.` };
 };
 export default deleteCharacter;
