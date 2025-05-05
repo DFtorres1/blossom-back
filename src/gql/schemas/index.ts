@@ -33,7 +33,7 @@ const schema = buildSchema(`
     }
     
     type Mutation {
-      updateCharacterIsStarred(id: ID!, is_starred: Boolean!): Character
+      updateIsStarred(id: ID!, is_starred: Boolean!): Character
       deleteCharacter(id: ID!): String
     }
 `);
