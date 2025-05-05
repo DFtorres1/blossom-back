@@ -7,6 +7,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "start": "npm run build && node dist/server.js",
+    "start:prod": "node dist/server.js",
     "build": "tsc && echo 'Build finished'",
     "dev": "nodemon",
     "lint": "eslint --ext .ts src/",

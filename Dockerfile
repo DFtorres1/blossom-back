@@ -16,4 +16,4 @@ RUN npm run build
 
 EXPOSE 3000
 
-CMD ["/wait-for-it.sh", "db:5432", "--", "sh", "-c", "npm run migration && seed:run && npm run start:prod"]
+CMD ["/wait-for-it.sh", "db:5432", "--", "sh", "-c", "npm run migration && npm run seed:run && npm run start:prod"]

@@ -1,4 +1,4 @@
-import DB from 'database';
+import DB from '../../../../database';
 
 const deleteCharacter = async ({ id }: { id: number }) => {
   const character = await DB.character.findByPk(id);

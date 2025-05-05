@@ -1,5 +1,5 @@
-import DB from 'database';
-import logger from 'utils/logger';
+import DB from '../../../../database';
+import logger from '../../../../utils/logger';
 
 const updateIsStarred = async ({
   id,

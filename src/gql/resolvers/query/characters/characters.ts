@@ -1,5 +1,5 @@
-import DB from 'database';
-import { CharacterDTO } from 'gql/dto/character.dto';
+import DB from '../../../..//database';
+import { CharacterDTO } from '../../../../gql/dto/character.dto';
 import { Op, WhereAttributeHash, Order } from 'sequelize';
 
 const characters = async (args: CharacterDTO) => {
