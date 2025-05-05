@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "blossom-back": "file:",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "graphql": "^16.11.0",
     "graphql-http": "^1.22.4",
